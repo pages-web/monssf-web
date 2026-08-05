@@ -11,7 +11,7 @@
 }
 
 .cf {
-  *zoom: 1;
+  zoom: 1;
 }
 
 .team-title {
@@ -464,7 +464,7 @@ iframe {
 }
 
 .sport-event.mocn .item:hover .desc .title span {
-  background: #fff;
+  background: #ffffff;
   border-color: #ccc;
 }
 
