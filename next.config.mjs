@@ -6,11 +6,10 @@ const withNextIntl = createNextIntlPlugin();
 
 const nextConfig = {
   images: {
-    domains: ["monssf.mn", "monssf.api.erxes.io", "img.youtube.com"],
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "monssfmn.next.erxes.io",
+        hostname: "monssfmn.next.erxes.io", // танай erxes instance-ийн домэйн
       },
     ],
   },

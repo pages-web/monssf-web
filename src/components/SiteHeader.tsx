@@ -59,8 +59,7 @@ export default function SiteHeader() {
   };
   type NavEntry = { label: string; href: string; children?: NavLink[] };
 
-  // The curated, hardcoded navbar (unchanged). Brand-new CMS categories
-  // are appended to it below.
+  // The curated, hardcoded navbar (kept only as fallback).
   const baseNav: NavEntry[] = [
     {
       label: t("MOSFF"),
@@ -178,22 +177,53 @@ export default function SiteHeader() {
     },
   ];
 
-  // ── Append brand-new CMS categories ────────────────────────────
-  // The curated navbar above is kept as-is. Any category created in the
-  // CMS that this codebase doesn't already know about is added as its own
-  // button (sorted by name), linking to the generic /category/[id] page —
-  // so a new category shows up without a code change, and nothing else
-  // in the navbar changes.
+  // ── New: build header from Erxes CMS menus (falls back to baseNav) ──
   const { data: catData } = useQuery(queries.cmsCategoryList, {
     variables: { clientPortalId: CLIENT_PORTAL_ID },
   });
+
+  // fetch menus
+  const { data: menuData } = useQuery(queries.cmsMenuList);
+  const menuList: any[] = menuData?.cmsMenuList ?? [];
+
+  // helper: build nested menu tree from flat menu list
+  const buildChildrenFrom = (parentId: string | null): NavEntry[] =>
+    menuList
+      .filter((m: any) => (m.parentId ?? null) === parentId)
+      .slice()
+      .sort((a: any, b: any) => (a.order || 0) - (b.order || 0))
+      .map((m: any) => {
+        // resolve href: external urls left as-is, otherwise locale-prefix
+        const raw = (m.url || "").trim();
+        const href =
+          raw.length === 0
+            ? "#"
+            : raw.match(/^https?:\/\//)
+            ? raw
+            : lk(raw.replace(/^\/+/g, ""));
+        return {
+          label: m.label,
+          href,
+          children: buildChildrenFrom(m._id),
+        };
+      });
+
+  // top-level header items are menus with parentId null (and kind 'header' where provided)
+  const cmsTopNav: NavEntry[] = menuList.length
+    ? buildChildrenFrom(null)
+    : [];
+
+  // append unknown CMS categories as extra top-level items (keeps previous behaviour)
   const newCategories: NavEntry[] = (catData?.cpCategories?.list ?? [])
     .filter((c: any) => c && !KNOWN_CATEGORY_IDS.has(c._id))
     .slice()
     .sort((a: any, b: any) => (a.name || "").localeCompare(b.name || ""))
     .map((c: any) => ({ label: c.name, href: lk(routeForCategory(c._id)) }));
 
-  const nav: NavEntry[] = [...baseNav, ...newCategories];
+  // final navigation: prefer CMS-driven top nav when available, otherwise fallback to baseNav
+  const nav: NavEntry[] = cmsTopNav.length
+    ? [...cmsTopNav, ...newCategories]
+    : [...baseNav, ...newCategories];
 
   // ── Headline ticker (CMS) — newest news first ──────────────────
   const { data } = useQuery(queries.cmsPostList, {

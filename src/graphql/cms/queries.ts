@@ -54,6 +54,7 @@ export const cmsPostList = gql`
     }
   }
 `;
+
 export const cmsPostDetails = gql`
   query Post($id: String, $clientPortalId: String) {
     cpPost(_id: $id, clientPortalId: $clientPortalId) {
@@ -176,10 +177,46 @@ export const cmsCategoryList = gql`
   }
 `;
 
+export const GET_CMS_PARTNERS = gql`
+  query CmsPosts(
+    $clientPortalId: String!
+    $categoryId: String!
+    $language: String
+  ) {
+    cmsPosts(
+      clientPortalId: $clientPortalId
+      categoryId: $categoryId
+      language: $language
+    ) {
+      _id
+      title
+      thumbnail
+      slug
+      content
+    }
+  }
+`;
+
+export const cmsMenuList = gql`
+  query cmsMenuList($kind: String) {
+    cmsMenuList(kind: $kind) {
+      _id
+      label
+      url
+      target
+      linkType
+      kind
+      parentId
+    }
+  }
+`;
+
 const queries = {
   cmsPostList,
   cmsPostDetails,
   cmsCategoryList,
+  GET_CMS_PARTNERS,
+  cmsMenuList,
 };
 
 export default queries;

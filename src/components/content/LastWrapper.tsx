@@ -3,58 +3,44 @@
 import React from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import { useQuery } from "@apollo/client";
+import { queries } from "@/graphql/cms";
+import { CATEGORY } from "@/graphql/cms/categories";
 
-// Partner organisations — add, remove or update entries here as needed
-const PARTNERS = [
-  {
-    href: "https://www.ausf.org/",
-    src: "/images/Mongolian Student Sports Association.png",
-    alt: "AUSF – Asian University Sports Federation",
-  },
-  {
-    href: "http://www.meds.gov.mn",
-    src: "/images/Mongolian Student Sports Association (1).png",
-    alt: "Монгол Улсын Боловсрол, Шинжлэх Ухааны Яам",
-  },
-  {
-    href: "http://fisu.net",
-    src: "/images/Mongolian Student Sports Association (2).png",
-    alt: "FISU – International University Sports Federation",
-  },
-  {
-    href: "http://www.golomtbank.com/",
-    src: "/images/Golomt Sports Association.png",
-    alt: "Голомт банк",
-  },
-  {
-    href: "https://ett.mn",
-    src: "/images/Mongolian Student Sports Association (3).png",
-    alt: "Эрдэнэс Тавантолгой",
-  },
-  {
-    href: "https://sport.gov.mn/",
-    src: "/images/Mokh Mongolian Student Sports.png",
-    alt: "МОХ – Монголын Олимпийн Хороо",
-  },
-];
+const FILE_BASE = "https://monssfmn.next.erxes.io/gateway/read-file?key=";
 
-/**
- * LastWrapper — "Our Partners" section.
- * Static partner list (unchanged data) on the new partners-grid design.
- */
 export default function LastWrapper() {
+  const { data, loading, error } = useQuery(queries.cmsPostList, {
+    variables: {
+      categoryIds: [CATEGORY.HOME_PARTNERS],
+    },
+  });
+
+  const partners = data?.cpPostList?.posts || [];
   const t = useTranslations("Home");
+
+  if (loading) return null;
+  if (error) return null;
 
   return (
     <section className="section partners-section">
       <div className="container">
         <h2 className="section-title">{t("partnersTitle")}</h2>
         <ul className="partners-grid">
-          {PARTNERS.map((partner) => (
-            <li className="partner-logo" key={partner.src}>
-              <a href={partner.href} target="_blank" rel="noopener noreferrer" className="noajax">
-                <Image src={partner.src} alt={partner.alt} width={150} height={100} />
-              </a>
+          {partners.map((post: any) => (
+            <li className="partner-logo" key={post.id}>
+              
+                {post.thumbnail?.url ? (
+                  <Image
+                    src={`${FILE_BASE}${encodeURIComponent(post.thumbnail.url)}`}
+                    alt={post.title}
+                    width={150}
+                    height={100}
+                  />
+                ) : (
+                  <span>{post.title}</span>
+                )}
+              
             </li>
           ))}
         </ul>

@@ -91,6 +91,7 @@ export const CATEGORY = {
   HOME_EVENTS: "v_591LkOAsDBnqqaPi1sJ", //     Нүүр - Арга хэмжээ → SportEvent
   HOME_VIDEOS: "dqNv-FmhDK415HMvH1Ot5", //     Нүүр - Бичлэг    → OutterWrapper (video highlights)
   HOME_SECTION: "cHox0CXIEs_Bg_EF3XUTM", //    Нүүр хуудас (parent grouping the homepage-widget feeds above)
+  HOME_PARTNERS: "7fMzFyxXiFIFfcE_tQdDH",
 } as const;
 
 export type CategoryKey = keyof typeof CATEGORY;
@@ -177,7 +178,6 @@ export const DEDICATED_ROUTE_BY_ID: Record<string, string> = Object.fromEntries(
 export function routeForCategory(id: string): string {
   return DEDICATED_ROUTE_BY_ID[id] ?? `category/${id}`;
 }
-
 
 /**
  * Categories that exist in the SaaS but are NOT wired to any page — kept
