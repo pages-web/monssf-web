@@ -150,12 +150,6 @@ export default function SiteHeader() {
             { label: t("handball"), href: lk("handball") },
             { label: t("cheerleading"), href: lk("cheerleading") },
             { label: t("taekwondo"), href: lk("taekwondo") },
-            { label: t("judo"), href: lk("judo") },
-            { label: t("wrestling"), href: lk("wrestling") },
-            { label: t("futsal"), href: lk("futsal") },
-            { label: t("volleyball"), href: lk("volleyball") },
-            { label: t("chess"), href: lk("chess") },
-            { label: t("table-tennis"), href: lk("table-tennis") },
           ],
         },
         {
