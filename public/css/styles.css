@@ -1,0 +1,499 @@
+.cf:before,
+.cf:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+
+.cf:after {
+  clear: both;
+}
+
+.cf {
+  zoom: 1;
+}
+
+.team-title {
+  font-weight: 300;
+}
+
+.team-role {
+  font-size: 12px;
+  color: #ff7800;
+}
+
+b {
+  font-weight: bold !important;
+}
+
+a {
+  outline: none !important;
+}
+
+#ajaxloader {
+  z-index: 999;
+}
+
+.geo-menu-logo {
+  position: relative;
+  width: 180px;
+  padding: 0px;
+}
+
+.geo-menu-logo > a {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -15px;
+  padding: 0px;
+  margin: 0px;
+}
+
+.geo-menu-logo > a > img {
+  position: relative;
+}
+
+.geo-midd-menu {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.geo-midd-menu > div {
+  width: 600px;
+  margin: 0px auto;
+}
+
+.geo-midd-menu table td:nth-child(1) {
+  text-align: right;
+  padding-right: 25px;
+  padding-top: 25px;
+}
+
+.geo-midd-menu table td:nth-child(3) {
+  text-align: left;
+  padding-left: 25px;
+  padding-top: 25px;
+}
+
+.geo-midd-menu table td:nth-child(2) {
+  width: 150px;
+}
+
+.geo-midd-menu table td:nth-child(2) img {
+  width: 100px;
+  opacity: 0;
+}
+
+.sidr-class-megamenu img {
+  display: none;
+}
+
+.list-0 {
+  list-style-type: decimal !important;
+  padding-left: 40px !important;
+}
+
+.list-0 li {
+  padding-left: 0px;
+}
+
+.list-0 ul {
+  list-style: none !important;
+  padding-left: 20px;
+  padding-top: 20px;
+}
+
+.post {
+  overflow: auto;
+}
+
+.news-title {
+  line-height: 1.4;
+}
+
+.news-title a {
+  text-transform: capitalize !important;
+  font-size: 20px;
+}
+
+#map-canvas img {
+  max-width: none;
+}
+
+.cat-list li,
+.cat-list a {
+  text-decoration: none;
+  /*text-transform: capitalize !important;*/
+}
+
+.errors .close {
+  display: none;
+}
+
+#form_container_1 h3 {
+  display: none;
+}
+
+iframe {
+  -moz-box-shadow: inset 0 0 5px #e5e5e5;
+  -webkit-box-shadow: inset 0 0 5px #e5e5e5;
+  box-shadow: inset 0 0 5px #e5e5e5;
+}
+
+.team-min-height {
+  height: 100px;
+}
+
+.head-other .txt {
+  font-family: "Roboto", sans-serif !important;
+}
+
+.req_anim {
+  background-color: rgba(125, 0, 0, 0.3) !important;
+}
+
+.not {
+  padding: 0px !important;
+  margin: 0px !important;
+  width: 100px;
+}
+
+.x3_4 {
+  width: 180px;
+  height: 240px;
+}
+
+.print-sec img {
+  border: 1px solid #e5e5e5;
+}
+
+@media print {
+  .print-media {
+    display: none;
+  }
+
+  .print-safe h2 {
+    font-size: 18px !important;
+  }
+
+  .print-safe > div,
+  .print-safe > div > div,
+  .print-safe > div > div > div {
+    font-size: 12px;
+    margin: 0px !important;
+    padding: 0px !important;
+  }
+}
+
+.partners {
+  height: 150px !important;
+}
+
+.partners img {
+  border-radius: 0px !important;
+}
+
+.mx-today .read-more {
+  margin-top: 10px;
+}
+
+.news-wrap .title-cap:first-word {
+  font-weight: bold;
+}
+
+.news-wrap .wrapper {
+  max-width: 1200px;
+}
+
+.news-wrap .row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.news-wrap .row .col-md-6 {
+  -ms-flex: 0 0 49%;
+  flex: 0 0 49%;
+  max-width: 49%;
+  margin: 0 5px;
+}
+
+.news-wrap .row .col-md-6:first-child {
+  margin-left: 0;
+}
+
+.news-wrap .row .col-md-4 {
+  -ms-flex: 0 0 31.333333%;
+  flex: 0 0 31.333333%;
+  max-width: 31.333333%;
+  margin: 0 4px;
+}
+
+.news-wrap .item-news {
+  margin-bottom: 20px;
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+}
+
+.news-wrap .item-news .position-relative {
+  position: relative;
+}
+
+.news-wrap .item-news h3 {
+  font-size: 13px;
+  font-weight: 300;
+  margin: 2px 0;
+}
+
+.news-wrap .item-news .desc {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.65+100 */
+  background: -moz-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.65) 100%
+  );
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.65) 100%
+  );
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.65) 100%
+  );
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#a6000000', GradientType=0);
+  /* IE6-9 */
+
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+}
+
+.news-wrap .item-news .inner {
+  padding: 25px 15px 15px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.news-wrap .item-news .tag {
+  margin-bottom: 15px;
+}
+
+.news-wrap .item-news .tag span {
+  font-size: 13px;
+  padding: 5px;
+  background: goldenrod;
+  color: #fff;
+}
+
+.news-wrap .item-news h3 {
+  font-family: "Roboto", sans-serif;
+}
+
+.news-wrap .item-news h3 a {
+  color: #fff;
+}
+
+.news-wrap .item-news:hover .inner {
+  padding: 45px 15px;
+}
+
+.news-wrap .all-news {
+  margin-right: 25px;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.news-wrap.video-wrap .all-news {
+  margin-top: 10px;
+  margin-right: 13px;
+}
+
+.news-wrap .all-news a {
+  font-weight: 300;
+  text-decoration: none;
+}
+
+.sport-event .event-wrap {
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+}
+
+.sport-event .type-title {
+  font-family: "Roboto", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.sport-event .item {
+  width: 23.5%;
+  position: relative;
+  overflow: hidden;
+  margin: 0 5px;
+}
+
+.home-event.sport-event .item {
+  width: 24.3%;
+}
+
+.home-event.sport-event .item:first-child {
+  margin-left: 0;
+}
+
+.home-event.sport-event .item:last-child {
+  margin-right: 0;
+}
+
+.sport-event.mocn .item .desc {
+  height: inherit;
+}
+.sport-event .item .desc {
+  height: 178px;
+  margin: 5px 15px;
+  background: #fff;
+  padding: 10px 12px 15px;
+  text-align: justify;
+  font-size: 13px;
+  position: relative;
+  top: -50px;
+}
+
+.sport-event .item .img {
+  overflow: hidden;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.sport-event .item .img:hover {
+  transform: scale(1.1);
+}
+
+.sport-event .item .img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.sport-event .item .title {
+  font-size: 16px;
+  font-weight: 300;
+  text-align: center;
+  position: relative;
+  z-index: 3;
+}
+
+.sport-event.mocn .item .title,
+.sport-event.mocn .item .title a,
+.sport-event.mocn .item .title a span,
+.sport-event.mocn .item .desc {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.sport-event.mocn .item .desc .title {
+  bottom: -18px;
+  font-size: 14px;
+}
+
+.sport-event.mocn .item .desc {
+  margin: 0;
+  margin-top: 20px;
+  padding: 0;
+  background: transparent;
+  text-align: justify;
+  font-size: 13px;
+  text-transform: uppercase;
+  top: inherit;
+}
+
+.sport-event.mocn .item .desc a span {
+  padding: 5px 10px;
+  color: #444;
+  border: 1px solid #ccc;
+  background-color: whitesmoke;
+  border-radius: 5px;
+}
+
+.mocn .event-wrap {
+  width: 100%;
+  margin-left: -10px;
+  margin-right: -10px;
+  justify-content: flex-start;
+}
+
+.sport-event.mocn .item .img {
+  height: 80%;
+  margin: 10px;
+}
+
+.sport-event.mocn .item {
+  width: 22.5%;
+  margin: 0 10px;
+  margin-bottom: 40px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: inherit;
+  background: whitesmoke;
+}
+
+.sport-event.mocn .item .img:hover {
+  transform: scale(1.03);
+}
+
+.sport-event.mocn .item:hover .desc .title span {
+  background: #ffffff;
+  border-color: #ccc;
+}
+
+.mocn-info {
+  padding-top: 30px;
+  border-top: 1px dotted #c3c3c3;
+}
+
+.mocn-info .inside .table-bordered thead tr {
+  margin-bottom: -1px;
+}
+
+.mocn-info .inside .table-bordered td,
+.mocn-info .inside .table-bordered th {
+  border-color: #777;
+  text-align: center;
+}
+.widget .widget-list {
+  margin-top: 20px;
+}
+.widget .widget-list .list-2 {
+  margin-top: 5px;
+}
+.widget .list-2 li {
+  padding-bottom: 4px;
+  margin-bottom: 4px;
+}
+.widget .widget-title {
+  margin-bottom: 5px;
+}
+.widget {
+}

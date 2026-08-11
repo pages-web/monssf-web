@@ -1,0 +1,29 @@
+/* Template Static CSS */
+@import url('/template_static/css/full.css');
+@import url('/template_static/css/skin2.css');
+@import url('/template_static/css/mosaic.css');
+@import url('/template_static/css/styles.css');
+@import url('/template_static/css/font-awesome.min.css');
+@import url('/template_static/css/jquery.sidr.light.css');
+@import url('/template_static/css/mega.css');
+@import url('/template_static/css/normalize.min.css');
+@import url('/template_static/css/responsive.css');
+@import url('/template_static/css/rs-plugin.css');
+@import url('/template_static/css/tooltipster.css');
+
+/* Public CSS */
+@import url('/css/styles.css');
+@import url('/css/gallery_styles.css');
+@import url('/css/reset.css');
+@import url('/css/table.css');
+
+/* Gerege CSS */
+@import url('/css/gerege/gallery_styles.css');
+@import url('/css/gerege/reset.css');
+@import url('/css/gerege/styles.css');
+@import url('/css/gerege/table.css');
+@import url('/css/gerege/gerege-codes.css');
+@import url('/css/gerege/gerege-embedded.css');
+@import url('/css/gerege/gerege-ie7-codes.css');
+@import url('/css/gerege/gerege-ie7.css');
+@import url('/css/gerege/gerege.css');
