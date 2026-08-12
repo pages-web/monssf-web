@@ -39,7 +39,10 @@ export default function OutterWrapper({ params }: { params: { locale: string } }
             <h2 className="section-title">{t("videoTitle")}</h2>
             <p className="section-subtitle">{t("videoSub")}</p>
           </div>
-          <a href={`/${params.locale}/all-videos`} className="btn btn-brand btn-lg noajax">
+          {/* Goes to /videos, which lists the "Бичлэг" category (every video).
+              This section itself shows only "Нүүр - Бичлэг", the three picked
+              for the homepage. */}
+          <a href={`/${params.locale}/videos`} className="btn btn-brand btn-lg noajax">
             {t("viewAllVideos")}
           </a>
         </div>

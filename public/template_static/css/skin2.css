@@ -160,7 +160,7 @@ ul.pagination li a.active,
 .widget-list.option-set li a:hover,
 .paralax-block .big-count div,
 .big-count div span {
-  color: #ff7800;
+  color: #123274;
 }
 
 /* 
@@ -172,7 +172,7 @@ h1 a,
 h2 a,
 h3 a,
 .big-count div {
-  color: #c11414;
+  color: #123274;
 }
 
 /* 
@@ -215,7 +215,7 @@ a.feat-title:hover,
 .paging .meta,
 .paging .col-1-2:before,
 .paging .col-1-2:after {
-  color: #ff7800;
+  color: #123274;
 }
 
 /* 
@@ -269,7 +269,7 @@ td.active-time b:first-child,
 .header-area .megamenu_container .megamenu li .dropdown_container,
 .header-area .megamenu_container .megamenu li .dropdown_fullwidth,
 .header-area .megamenu_container .megamenu li .dropdown_flyout li ul {
-  background: #c11414;
+  background: #123274;
   height: 100px;
 }
 
@@ -302,7 +302,7 @@ td.active-time b:first-child,
 /* 
 018. HEADER AREA BORDERS ___________________________________________________ */
 .outter-wrapper.header-area * {
-  border-color: #d23b3b !important;
+  border-color: #123274 !important;
 }
 
 /* 
@@ -314,7 +314,7 @@ td.active-time b:first-child,
 .post-header-area .megamenu_container .megamenu li .dropdown_container,
 .post-header-area .megamenu_container .megamenu li .dropdown_fullwidth,
 .post-header-area .megamenu_container .megamenu li .dropdown_flyout li ul {
-  background: #650000;
+  background: #123274;
 }
 
 /* 

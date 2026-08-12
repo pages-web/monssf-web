@@ -2,76 +2,87 @@
 
 import { useQuery } from "@apollo/client";
 import { cmsPostList } from "@/graphql/cms/queries";
-import Image from "next/image";
 import PageShell from "@/components/PageShell";
 import { CATEGORY } from "@/graphql/cms/categories";
 
-/* 🔥 excerpt доторх YouTube URL олно */
-function extractYoutubeUrl(text: string) {
+/**
+ * Видео — every post in the "Бичлэг" category.
+ *
+ * The homepage section (OutterWrapper) shows only the three picked for
+ * "Нүүр - Бичлэг"; its "Бүх видео" button lands here.
+ *
+ * Cards embed the player directly, the same way the homepage does. The
+ * previous version rendered legacy `.mosaic-*` markup with a YouTube
+ * thumbnail, which could never show: `.mosaic-backdrop` is `display:none`
+ * in the old template CSS and was revealed by template JS that no longer
+ * runs, so every image collapsed to 0×0. Embedding also means each card
+ * plays in place — the old ones linked to `/video/<id>`, a route that
+ * does not exist.
+ */
+
+/** Pull the YouTube id out of whatever shape the excerpt holds. */
+function getYoutubeId(text: string): string {
   if (!text) return "";
-
   const match = text.match(
-    /(https?:\/\/(www\.)?(youtube\.com|youtu\.be)\/[^\s]+)/i,
+    /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/)([\w-]+)/,
   );
-
-  return match ? match[0] : "";
-}
-
-/* 🔥 бүх төрлийн YouTube link support */
-function getYoutubeId(url: string) {
-  if (!url) return "";
-
-  const regExp =
-    /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/)([^&?]+)/;
-
-  const match = url.match(regExp);
   return match ? match[1] : "";
 }
 
 export default function Page() {
-  const { data } = useQuery(cmsPostList, {
+  const { data, loading } = useQuery(cmsPostList, {
     variables: {
       categoryIds: [CATEGORY.VIDEOS],
+      sortField: "createdAt",
+      sortDirection: "desc",
     },
   });
 
-  const posts = data?.cpPostList?.posts || [];
+  // The API also returns posts of child categories; keep this page to its own.
+  const posts: any[] =
+    data?.cpPostList?.posts?.filter((p: any) =>
+      p?.categoryIds?.includes(CATEGORY.VIDEOS),
+    ) ?? [];
+
+  const videos = posts
+    .map((post) => ({ post, videoId: getYoutubeId(post.excerpt || "") }))
+    .filter((v) => v.videoId);
 
   return (
     <PageShell title="Видео">
-      <div
-        className="thumb-gallery clearfix"
-        style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}
-      >
-        {posts.map((post: any, i: number) => {
-          const url = extractYoutubeUrl(post.excerpt || "");
-          const videoId = getYoutubeId(url);
-
-          if (!videoId) return null;
-
-          return (
-            <div key={i} className="col-1-4" style={{ width: "23%" }}>
-              <div className="mosaic-block fade">
-                <a href={`/video/${post.slug || post._id}`}>
-                  <div className="mosaic-backdrop">
-                    <Image
-                      src={`https://img.youtube.com/vi/${videoId}/0.jpg`}
-                      alt={post.title}
-                      style={{ width: "100%", display: "block" }}
-                      width={400}
-                      height={300}
-                    />
-                  </div>
-
-                  <div className="details">
-                    <h4>{post.title}</h4>
-                  </div>
-                </a>
+      {loading ? (
+        <p>...</p>
+      ) : videos.length === 0 ? (
+        <p>—</p>
+      ) : (
+        <div className="grid-3">
+          {videos.map(({ post, videoId }) => (
+            <div className="card" key={post._id}>
+              <div className="card-image">
+                <iframe
+                  src={`https://www.youtube.com/embed/${videoId}`}
+                  title={post.title}
+                  width="100%"
+                  height="100%"
+                  style={{ border: "none", position: "absolute", inset: 0 }}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
               </div>
+              {post.title && (
+                <div className="card-content">
+                  <h3
+                    className="card-title line-clamp-2"
+                    style={{ fontSize: "var(--text-base)" }}
+                  >
+                    {post.title}
+                  </h3>
+                </div>
+              )}
             </div>
-          );
-        })}
-      </div>
+          ))}
+        </div>
+      )}
     </PageShell>
   );
 }

@@ -1,6 +1,8 @@
 "use client";
 
 import { useQuery } from "@apollo/client";
+import { useTranslations } from "next-intl";
+import { ArrowRight } from "lucide-react";
 import { queries } from "@/graphql/cms";
 import { routeForCategory, CLIENT_PORTAL_ID } from "@/graphql/cms/categories";
 import MenuCategoryPage from "@/components/MenuCategoryPage";
@@ -23,6 +25,7 @@ export default function CategoryPage({
   params: { locale: string; id: string };
 }) {
   const { locale, id } = params;
+  const t = useTranslations("Home");
 
   const { data: menuData } = useQuery(queries.cpMenus, {
     variables: { kind: "header", language: locale },
@@ -54,16 +57,31 @@ export default function CategoryPage({
       menu={menu}
       categoryId={categoryId}
     >
+      {/* Sub-categories, as the same cards the posts below use — a parent
+          menu's children were a bare bullet list before, which read as
+          leftover markup next to the card grid. Destinations are unchanged. */}
       {children.length > 0 && (
-        <ul className="cat-list" style={{ marginBottom: "2rem" }}>
+        <div className="grid-3" style={{ marginBottom: "var(--space-10)" }}>
           {children.map((c) => (
-            <li key={c._id}>
-              <a href={`/${locale}/${routeForCategory(c._id)}`} className="noajax">
-                {c.name}
-              </a>
-            </li>
+            <a
+              key={c._id}
+              href={`/${locale}/${routeForCategory(c._id)}`}
+              className="noajax"
+            >
+              <article className="card">
+                <div className="card-content">
+                  <h3 className="card-title line-clamp-2">{c.name}</h3>
+                  {c.description && (
+                    <p className="card-text line-clamp-2">{c.description}</p>
+                  )}
+                  <span className="card-link">
+                    {t("readMore")} <ArrowRight size={16} />
+                  </span>
+                </div>
+              </article>
+            </a>
           ))}
-        </ul>
+        </div>
       )}
     </MenuCategoryPage>
   );

@@ -4,6 +4,7 @@ import React from "react";
 import { useQuery } from "@apollo/client";
 import queries from "@/graphql/cms/queries";
 import PostCards from "@/components/content/PostCards";
+import BackButton from "@/components/BackButton";
 import { sidebarFor, type CmsMenu } from "@/lib/menus";
 
 /**
@@ -91,6 +92,11 @@ export default function MenuCategoryPage({
         )}
 
         <div className="content-area">
+          {/* Every menu page gets a way back — the sidebar only covers the
+              current section, so a reader who arrived from elsewhere (search,
+              a card, a shared link) would otherwise be stranded. */}
+          <BackButton />
+
           {children}
 
           {loading ? (

@@ -126,7 +126,7 @@
 }
 
 a {
-  color:#a44141;
+  color:#000080;
   text-decoration: none;
 }
 
@@ -148,7 +148,7 @@ h2 {
 
 h3 {
   font-size: 15px;
-  color:#a44141;
+  color:#000080;
 }
 
 #header-container #nav-buttons {
@@ -170,13 +170,13 @@ h3 {
 }
 
 #header-container #nav-buttons div.close {
-  background:#a44141;
-  border-color:#a44141;
+  background: #121834;;
+  border-color:#000080;
   margin-left:20px;
 }
 
 #header-container #nav-buttons div.close:hover {
-  background: #7f1e15;
+  background: #15357f;
 }
 
 #header-container #nav-buttons div.prev:hover,

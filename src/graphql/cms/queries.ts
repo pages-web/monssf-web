@@ -177,6 +177,8 @@ export const cmsCategoryList = gql`
         slug
         parentId
         status
+        # Shown as the card body on a parent menu's sub-category cards.
+        description
       }
     }
   }
