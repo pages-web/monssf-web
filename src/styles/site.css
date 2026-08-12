@@ -717,7 +717,7 @@ h6 {
   color: var(--color-white);
   border-color: var(--color-accent);
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(194, 91, 91, 0.35);
+  box-shadow: 0 6px 16px rgba(120, 120, 120, 0.35);
 }
 
 .btn-sm {
